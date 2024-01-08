@@ -1,0 +1,68 @@
+version: '3.8'
+
+volumes:
+  maria:
+
+services:
+
+  #containaire php 
+  bookmusicphp:
+    container_name: phpbookmusic
+    build: 
+      context: ./php
+    ports:
+      - '9001:9000'
+    environment:
+      TZ: UTC
+    volumes:
+      - ./app:/var/www/symfo
+    depends_on:
+      - bookbase
+
+  #container nginx
+  bookmusicnginx:
+    container_name: nginxbookmusic
+    image: nginx:stable-alpine
+    ports:
+      - '80:80'
+      - '8443:443'
+    environment:
+      TZ: UTC
+    volumes:
+      - ./app:/var/www/symfo
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - phpbookmusic
+      - bookmusicbase
+      - bookmusicnode
+
+  #container de bdd MARIADB
+  bookmusicbase:
+    container_name: basebookmusic
+    image: mariadb:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      TZ: UTC
+      MYSQL_ROOT_PASSWORD: admin2024
+      MYSQL_DATABASE: bookdata
+      MYSQL_USER: bookuser
+      MYSQL_PASSWORD: book2024
+    ports:
+      - '3307:3306'
+    volumes:
+      - maria:/car/lib/mysql
+
+  #container NODEJS
+  bookmusicnode: 
+    container_name: nodebookmusic
+    build: 
+      context: ./node
+    volumes:
+      - ./app:/var/www/symfo
+    restart: always
+    environment:
+      TZ: UTC
+    depends_on:
+      - bookmusicphp
+    tty: true
