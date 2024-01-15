@@ -1,0 +1,32 @@
+.nav{
+    background: linear-gradient(rgba(66, 84, 58, 1),rgba(30, 43, 25, 1)) ;
+    width: 120px;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+
+
+.logo{
+    height: 100px;
+    width: 100px;
+}
+
+.logonavbar{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.exit.logonavbar{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.first-nav{
+    display: flex;
+    flex-direction: column;
+}
+

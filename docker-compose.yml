@@ -1,7 +1,7 @@
 version: '3.8'
 
 volumes:
-  maria:
+  mariadizzer:
 
 services:
 
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./app:/var/www/symfo
     depends_on:
-      - bookbase
+      - bookmusicbase
 
   #container nginx
   bookmusicnginx:
@@ -32,7 +32,7 @@ services:
       - ./app:/var/www/symfo
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - phpbookmusic
+      - bookmusicphp
       - bookmusicbase
       - bookmusicnode
 
@@ -51,7 +51,7 @@ services:
     ports:
       - '3307:3306'
     volumes:
-      - maria:/car/lib/mysql
+      - mariadizzer:/car/lib/mysql
 
   #container NODEJS
   bookmusicnode: 
