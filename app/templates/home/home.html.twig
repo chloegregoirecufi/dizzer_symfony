@@ -8,12 +8,14 @@
 {% block body %}
 <nav class="nav flex-column">
     <div class="first-nav">
-        <a class="nav-link active" href="/home"><img class="logo" src="/images/logo.png" alt="logo" /></a>
+        <a class="nav-link active" href="{{  path('accueil') }}"><img class="logo" src="/images/logo.png" alt="logo" /></a>
         <a class="nav-link" href="#"><img class="logonavbar" src="/images/musicl.svg" alt="logo music" /></a>
         <a class="nav-link" href="#"><img class="logonavbar" src="/images/user.svg" alt="logo user" /></a>
+        <a class="nav-link" href="#"><img class="logonavbar" src="/images/search.svg" alt="logo search" /></a>
+
   </div>
     <div>
-        <a class="nav-link" href="#"><img class="logonavbar exit" src="/images/disconnect.svg" alt="logo disconnect" /></a>
+        <a class="nav-link" href="{{ path('disconnect') }}"><img class="logonavbar exit" src="/images/disconnect.svg" alt="logo disconnect" /></a>
     </div>
 </nav>
 

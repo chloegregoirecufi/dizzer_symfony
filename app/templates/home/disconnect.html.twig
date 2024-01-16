@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ma page de connection{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="css/style.css" />
+{% endblock %}
+
+{% block body %}
+<nav class="disco">
+        <div class="d-flex  justify-content-center">
+            <div class="d-flex-column justify-content-start">
+                <a class="nav-link active"><img class="logo-d" src="/images/logo.png" alt="logo" /></a>
+                <h2 class="title">Dizzer</h2>
+            </div>
+        </div>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card-connection text-white" style="border-radius: 1rem;">
+                         <div class="card-body p-5 pt-2 text-center">
+                            <div class="mb-md-5 mt-md-4 pb-5">
+                            <div class="d-flex  justify-content-center">
+                            <div class="d-flex-column justify-content-start">
+                                <a class="nav-link"><img class="logodisco" src="/images/user.svg" alt="logo user" /></a>
+                            </div>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="typeEmailX">Adresse mail</label>
+                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" />
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="typePasswordX">Password</label>
+                                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                            </div>
+                                <p class="small mb-5 pb-lg-2"><a class="text-white-50 form-label" href="#!">Forgot password?</a></p>
+                                <button class="btn btn-outline-light btn-lg px-5 form-label" type="submit" href=>Se connecter</button>
+                            </div>
+                            <div>
+                                <p class="mb-0 form-label">Vous n'avez pas créer de compte ? <a href="#!" class="text-white-50 fw-bold form-label">Créer un compte</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</nav>
+
+{% endblock %}
