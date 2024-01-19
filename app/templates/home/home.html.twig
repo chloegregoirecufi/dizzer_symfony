@@ -19,6 +19,20 @@
     </div>
 </nav>
 
-
-
+    <h1 class="text-title text-uppercase font-weight-bold">Les plus likés<h1>
+{% for music in musics %}
+<div class="principal">
+    <div class="card text-card">
+        <a href="{{ path('viewDetail') }}"><img class="card-img-top" src="/images/rihanna.png" alt="Card image cap"></a>
+            <div>
+                <p class="card-text">
+                    <h4>{{ music.title }}<h4>
+                    {% for ar in music.artiste %}
+                    <h1>{{ ar.name}}<h1>
+                    {% endfor %}
+                </p>
+            </div>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

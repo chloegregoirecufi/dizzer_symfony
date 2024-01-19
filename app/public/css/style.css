@@ -19,12 +19,18 @@
 
 
 
+body{
+    background-color: rgba(18, 29, 15, 1);
+    
+}
 
 .nav{
     background: linear-gradient(rgba(66, 84, 58, 1),rgba(30, 43, 25, 1)) ;
     width: 120px;
     height: 100vh;
     justify-content: space-between;
+    position: absolute;
+    z-index: 2;
 }
 
 
@@ -49,6 +55,35 @@
 .first-nav{
     display: flex;
     flex-direction: column;
+}
+
+.principal{
+    display: flex;
+    flex-direction: row;
+    margin-left: 200px;
+}
+
+.card{
+    width: 200px;
+    height: 200px;
+    margin-right: 100px;
+    margin-top: 20px;
+    background-color: transparent;
+}
+
+.text-title {
+    color: rgba(242, 217, 217, 1);
+    padding-left: 150px;
+    padding-top: 10px;
+    font-family: 'Karla';
+
+}
+
+.text-card{
+    color: rgba(242, 217, 217, 1);
+    padding: 0px;
+    font-family: 'Karla';
+    text-align: center;
 }
 
 

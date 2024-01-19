@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\MusicRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\Album;
+use App\Entity\Artiste;
+use App\Entity\Categories;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MusicRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: MusicRepository::class)]
 class Music
@@ -28,21 +32,22 @@ class Music
     #[ORM\ManyToMany(targetEntity: Categories::class, mappedBy: 'music')]
     private Collection $categories;
 
-    #[ORM\ManyToMany(targetEntity: user::class, inversedBy: 'music')]
-    private Collection $users;
-
-    #[ORM\ManyToMany(targetEntity: album::class, inversedBy: 'music')]
+    #[ORM\ManyToMany(targetEntity: Album::class, inversedBy: 'music')]
     private Collection $album;
 
-    #[ORM\ManyToMany(targetEntity: artiste::class, inversedBy: 'music')]
+    #[ORM\ManyToMany(targetEntity: Artiste::class, inversedBy: 'music')]
     private Collection $artiste;
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'music')]
+    private Collection $user;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->user = new ArrayCollection();
         $this->album = new ArrayCollection();
         $this->artiste = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,29 +118,7 @@ class Music
         return $this;
     }
 
-    /**
-     * @return Collection<int, user>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
 
-    public function addUser(user $user): static
-    {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(user $user): static
-    {
-        $this->users->removeElement($user);
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, album>
@@ -183,5 +166,13 @@ class Music
         $this->artiste->removeElement($artiste);
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
     }
 }
