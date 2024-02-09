@@ -60,14 +60,16 @@ body{
 .principal{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     margin-left: 200px;
+    
 }
 
 .card{
     width: 200px;
     height: 200px;
     margin-right: 100px;
-    margin-top: 20px;
+    margin-bottom: 100px;
     background-color: transparent;
 }
 

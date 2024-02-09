@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste d'image {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h4 class="text-title text-uppercase font-weight-bold">Formulaire de recherche</h4>
+        {{ form_start(form) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+</div>
+<div class="row">
+   {{ query }}
+</div>
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    {% for image in images %}
+    <div class="col">
+        <img src="{{ image }}">
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

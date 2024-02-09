@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MusicRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use ApiPlatform\Metadata\ApiResource;
+
 
 #[ORM\Entity(repositoryClass: MusicRepository::class)]
 class Music
@@ -18,6 +20,7 @@ class Music
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[ApiResource]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]

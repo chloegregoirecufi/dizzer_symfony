@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\MusicRepository;
+use App\Repository\AlbumRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -10,11 +10,18 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
 
+    private $albumRepo;
+
+    public function __construct(AlbumRepository $albumRepository)
+    {
+        $this->albumRepo = $albumRepository;
+    }
+
     #[Route("/home", name: "accueil")]
-    public function home(MusicRepository $musicRepo)
+    public function home(AlbumRepository $albumRepo)
     {
         return $this->render("home/home.html.twig",[
-            "musics" => $musicRepo->findAll(),
+            "albums" => $this->albumRepo->findAll(),
         ]);
     }
 
